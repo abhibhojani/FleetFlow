@@ -119,25 +119,25 @@ export function FleetProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     // Fetch vehicles on load
-    fetch('http://localhost:5000/api/vehicles')
+    fetch('https://fleetflow-backend-nf95.onrender.com/api/vehicles')
       .then(res => res.json())
       .then(data => setVehicles(data.map((item: any) => ({ ...item, id: item._id || item.id }))))
       .catch(err => console.error("Failed to load vehicles:", err));
 
     // Fetch drivers on load
-    fetch('http://localhost:5000/api/drivers')
+    fetch('https://fleetflow-backend-nf95.onrender.com/api/drivers')
       .then(res => res.json())
       .then(data => setDrivers(data.map((item: any) => ({ ...item, id: item._id || item.id }))))
       .catch(err => console.error("Failed to load drivers:", err));
 
     // Fetch maintenance logs on load
-    fetch('http://localhost:5000/api/maintenance')
+    fetch('https://fleetflow-backend-nf95.onrender.com/api/maintenance')
       .then(res => res.json())
       .then(data => setMaintenanceLogs(data.map((item: any) => ({ ...item, id: item._id || item.id }))))
       .catch(err => console.error("Failed to load maintenance logs:", err));
 
     // Fetch expense logs on load
-    fetch('http://localhost:5000/api/expenses')
+    fetch('https://fleetflow-backend-nf95.onrender.com/api/expenses')
       .then(res => res.json())
       .then(data => setExpenseLogs(data.map((item: any) => ({ ...item, id: item._id || item.id }))))
       .catch(err => console.error("Failed to load expense logs:", err));
@@ -145,7 +145,7 @@ export function FleetProvider({ children }: { children: React.ReactNode }) {
 
   const addVehicle = async (vehicle: Omit<Vehicle, 'id'>) => {
     try {
-      const response = await fetch('http://localhost:5000/api/vehicles', {
+      const response = await fetch('https://fleetflow-backend-nf95.onrender.com/api/vehicles', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(vehicle)
@@ -164,7 +164,7 @@ export function FleetProvider({ children }: { children: React.ReactNode }) {
 
   const updateVehicleStatus = async (id: string, status: VehicleStatus) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/vehicles/${id}`, {
+      const response = await fetch(`https://fleetflow-backend-nf95.onrender.com/api/vehicles/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status })
@@ -179,7 +179,7 @@ export function FleetProvider({ children }: { children: React.ReactNode }) {
 
   const editVehicle = async (id: string, vehicleUpdate: Partial<Vehicle>) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/vehicles/${id}`, {
+      const response = await fetch(`https://fleetflow-backend-nf95.onrender.com/api/vehicles/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(vehicleUpdate)
@@ -197,7 +197,7 @@ export function FleetProvider({ children }: { children: React.ReactNode }) {
   const deleteVehicle = async (id: string) => {
     if (window.confirm("Are you sure you want to permanently delete this vehicle?")) {
       try {
-        const response = await fetch(`http://localhost:5000/api/vehicles/${id}`, {
+        const response = await fetch(`https://fleetflow-backend-nf95.onrender.com/api/vehicles/${id}`, {
           method: 'DELETE'
         });
         if (response.ok) {
@@ -211,7 +211,7 @@ export function FleetProvider({ children }: { children: React.ReactNode }) {
 
   const addDriver = async (driver: Omit<Driver, 'id'>) => {
     try {
-      const response = await fetch('http://localhost:5000/api/drivers', {
+      const response = await fetch('https://fleetflow-backend-nf95.onrender.com/api/drivers', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(driver)
@@ -230,7 +230,7 @@ export function FleetProvider({ children }: { children: React.ReactNode }) {
 
   const updateDriverStatus = async (id: string, updates: Partial<Driver>) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/drivers/${id}`, {
+      const response = await fetch(`https://fleetflow-backend-nf95.onrender.com/api/drivers/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updates)
@@ -274,7 +274,7 @@ export function FleetProvider({ children }: { children: React.ReactNode }) {
 
   const addMaintenanceLog = async (log: Omit<MaintenanceLog, 'id'>) => {
     try {
-      const response = await fetch('http://localhost:5000/api/maintenance', {
+      const response = await fetch('https://fleetflow-backend-nf95.onrender.com/api/maintenance', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -308,7 +308,7 @@ export function FleetProvider({ children }: { children: React.ReactNode }) {
 
   const editMaintenanceLog = async (id: string, logUpdate: Partial<MaintenanceLog>) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/maintenance/${id}`, {
+      const response = await fetch(`https://fleetflow-backend-nf95.onrender.com/api/maintenance/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(logUpdate)
@@ -329,7 +329,7 @@ export function FleetProvider({ children }: { children: React.ReactNode }) {
 
   const addExpenseLog = async (log: Omit<ExpenseLog, 'id'>) => {
     try {
-      const response = await fetch('http://localhost:5000/api/expenses', {
+      const response = await fetch('https://fleetflow-backend-nf95.onrender.com/api/expenses', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(log)
