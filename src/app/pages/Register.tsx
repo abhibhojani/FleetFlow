@@ -18,7 +18,7 @@ export default function Register() {
         e.preventDefault();
         setError('');
         try {
-            const response = await fetch('http://localhost:5000/api/auth/register', {
+            const response = await fetch('https://fleetflow-backend-nf95.onrender.com/api/auth/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email, password, role })
@@ -59,7 +59,7 @@ export default function Register() {
                                 <Input
                                     id="name"
                                     type="text"
-                                    placeholder="John Doe"
+                                    placeholder="Vansh Hala"
                                     className="pl-10"
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
